@@ -1,16 +1,19 @@
 const express = require("express");
+require("dotenv").config();
+const cors = require("cors");
+
+const server= express();
+server.use(cors());
+
 const librosRouter = require("./src/api/libros/libros.routes");
 const autoresRouter = require("./src/api/autores/autores.routes");
 const userRouter = require("./src/api/users/user.routes");
 
-require("dotenv").config();
-const cors= require("cors");
-const cloudinary = require("cloudinary").v2;
 
+const cloudinary = require("cloudinary").v2;
 
 const PORT = process.env.PORT;
 
-const server= express();
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
 
@@ -28,7 +31,7 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET,
 })
-server.use(cors());
+
 
 server.use((err, req, res, next) => {
     return res.status(err.status || 500).json(err.message || "Error inesperado");
