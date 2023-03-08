@@ -4,14 +4,7 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 const server= express();
 
-const corsOptions ={
-    origin:'https://node-git-65s4.vercel.app/libros',
-    optionsSuccessStatuts:200
-}
-
-server.get('/', cors(corsOptions), function(req,res,next){
-    res.json({msg:'This is CORS-enables for only example.com'})
-})
+server.use(cors());
 
 const librosRouter = require("./src/api/libros/libros.routes");
 const autoresRouter = require("./src/api/autores/autores.routes");
