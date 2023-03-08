@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-
+const PORT = process.env.PORT;
 const server= express();
 server.use(cors());
 
@@ -12,7 +12,7 @@ const userRouter = require("./src/api/users/user.routes");
 
 const cloudinary = require("cloudinary").v2;
 
-const PORT = process.env.PORT;
+
 
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
