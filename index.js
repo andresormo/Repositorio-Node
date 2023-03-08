@@ -4,7 +4,10 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 const server= express();
 
-server.use(cors());
+server.use(cors({
+    origin:"*",
+    credentials:true
+}));
 
 const librosRouter = require("./src/api/libros/libros.routes");
 const autoresRouter = require("./src/api/autores/autores.routes");
@@ -12,8 +15,6 @@ const userRouter = require("./src/api/users/user.routes");
 
 
 const cloudinary = require("cloudinary").v2;
-
-
 
 server.use(express.json());
 server.use(express.urlencoded({extended:true}));
