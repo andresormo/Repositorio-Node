@@ -3,7 +3,9 @@ require("dotenv").config();
 const cors = require("cors");
 const PORT = process.env.PORT;
 const server= express();
-server.use(cors());
+server.use(cors({
+   origins:{'Access-Control-Allow-Origin': 'https://node-git-65s4.vercel.app/libros'}
+}));
 
 const librosRouter = require("./src/api/libros/libros.routes");
 const autoresRouter = require("./src/api/autores/autores.routes");
