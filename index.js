@@ -4,10 +4,9 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 const server= express();
 
-server.use(cors({
-    origin:"*",
-    credentials:true
-}));
+server.use(cors());
+
+
 
 const librosRouter = require("./src/api/libros/libros.routes");
 const autoresRouter = require("./src/api/autores/autores.routes");
