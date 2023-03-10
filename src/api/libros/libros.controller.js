@@ -74,7 +74,7 @@ const actulizarLibro = async (req, res, next) => {
         const { id } = req.params;
 
         if (req.file) {
-            
+
             const oldLibro = await Libro.findById(id);
             if (oldLibro.caratula) {
                 deleteFIle(oldLibro.caratula);
